@@ -17,10 +17,12 @@
         <b-button variant="success" href="#">Subscribe</b-button>
       </b-jumbotron>
    </section>
+   {{-- {{ $videos }} --}}
 
    <section>
     <h3>Episodes</h3>
-       <episodes :videos={{$series->videos}}></episodes>
+    {{-- {{ videos }} must be between " " --}}
+       <episodes :videos="{{ $videos }}"></episodes>
    </section>
   </div>
 

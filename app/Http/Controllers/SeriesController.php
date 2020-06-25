@@ -47,7 +47,9 @@ class SeriesController extends Controller
      */
     public function show(Series $series)
     {
-        return view('front.series.show',compact('series'));
+        // $series is the filtering result of series
+        $videos = $series->videos;
+        return view('front.series.show',compact('series', 'videos'));
     }
 
     /**
