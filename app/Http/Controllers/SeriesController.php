@@ -47,6 +47,7 @@ class SeriesController extends Controller
      */
     public function show(Series $series)
     {
+        // $videos= $series->videos;
         return view('front.series.show',compact('series'));
     }
 
@@ -82,5 +83,28 @@ class SeriesController extends Controller
     public function destroy(Series $series)
     {
         //
+    }
+
+    public function episode(Series $series, $episodeNumber)
+    {
+        $video = $series->videos()->where('episode_number',$episodeNumber)->first();
+        $nextVideo = $series->videos()->where('episode_number',$episodeNumber+1)->first();
+        $nextVideoUrl=$nextVideo->url ?? null;
+        $breadCrumbs=[
+            [
+                'text'=>'Browse',
+                'href'=>route('series.index'),
+            ],
+            [
+                'text'=>$series->title,
+                'href'=>route('series.show',$series),
+            ],
+            [
+                'text'=>$video->title,
+                'active'=>true,
+            ]
+            ];
+        return view('front.series.video', compact('series','episodeNumber', 'video','nextVideoUrl','breadCrumbs'));
+
     }
 }

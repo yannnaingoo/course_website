@@ -12,8 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
-        factory(App\Series::class,10)->create()->each(function($series){
-            $series->videos()->saveMany(factory(App\Video::class,10)->make());
+        factory(App\Series::class,5)->create()->each(function($series){
+            $series->videos()->saveMany(factory(App\Video::class,20)->make());
         });
     }
 }

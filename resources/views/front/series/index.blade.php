@@ -11,8 +11,9 @@
                             <b-card
                                     title="{{$s->title}}"
                                     class="text-center my-2"
-                                    img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
-                                <b-card-text>
+                                    {{-- img-src="" img-alt="Image" img-top --}}
+                                    img-src="{{ $s->image ? asset('storage/'.$s->image)  : 'https://picsum.photos/300/300/?image=41'}}"
+                                    img-alt="Image" img-top >
                                    {{\Str::limit($s->description,80)}}
                                 </b-card-text>
                                 <template v-slot:footer>
